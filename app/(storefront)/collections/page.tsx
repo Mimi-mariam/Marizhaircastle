@@ -69,7 +69,7 @@ export default async function CollectionsPage() {
   });
 
   const countMap = new Map(
-    categoryCounts.map((c) => [c.categoryId, c._count.id])
+    categoryCounts.map((c: { categoryId: string | null; _count: { id: number } }) => [c.categoryId, c._count.id])
   );
 
   return (
