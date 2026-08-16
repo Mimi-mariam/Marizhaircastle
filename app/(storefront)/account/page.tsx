@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/Badge";
 import { hoursRemainingInDeliveryWindow } from "@/lib/orders/sla";
 import styles from "./account-page.module.css";
 
+export const dynamic = "force-dynamic";
+
 export default async function CustomerAccountPage() {
   const user = await requireAuth();
 

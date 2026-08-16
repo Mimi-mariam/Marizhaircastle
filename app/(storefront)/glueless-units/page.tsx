@@ -5,6 +5,8 @@ import { gluelessUnitType } from "@/lib/glueless/glueless";
 import { BackLink } from "@/components/storefront/BackLink";
 import styles from "./glueless.module.css";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Glueless Units | Marizhaircastle",
   description:
