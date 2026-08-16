@@ -43,13 +43,13 @@ export function StyleCarousel({ styles: items }: { styles: HairStyleItem[] }) {
       const firstCard = el.firstElementChild as HTMLElement | null;
       const step = firstCard ? firstCard.offsetWidth + 16 : 280;
 
-      // If reached end, smooth scroll back to start, else advance
-      if (scrollLeft + clientWidth >= scrollWidth - 15) {
+      // If reached end, scroll back to start, else advance
+      if (scrollLeft + clientWidth >= scrollWidth - 20) {
         el.scrollTo({ left: 0, behavior: "smooth" });
       } else {
         el.scrollBy({ left: step, behavior: "smooth" });
       }
-    }, 3500);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isPaused]);

@@ -4,6 +4,9 @@
   height: 540px;
   overflow: hidden;
   background-color: #0e0a0c;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 @media (min-width: 768px) {
@@ -20,7 +23,9 @@
   background-repeat: no-repeat;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+  transform: translateZ(0);
   display: flex;
   align-items: center;
   justify-content: flex-start;

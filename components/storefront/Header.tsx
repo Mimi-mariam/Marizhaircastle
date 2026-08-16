@@ -43,6 +43,7 @@ export function Header() {
               onClick={() => setDrawerOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={drawerOpen}
+              aria-controls="mobile-drawer"
             >
               <svg
                 width="22"
@@ -122,6 +123,7 @@ export function Header() {
       {/* Slide-out Menu Drawer */}
       {drawerOpen && (
         <aside
+          id="mobile-drawer"
           className={styles.drawer}
           role="dialog"
           aria-modal="true"

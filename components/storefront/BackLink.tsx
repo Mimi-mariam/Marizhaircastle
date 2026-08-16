@@ -12,16 +12,31 @@ export function BackLink({
 }) {
   const router = useRouter();
 
-  function handleBack() {
-    if (window.history.length > 1) {
-      router.back();
+  function handleBack(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    if (typeof window !== "undefined") {
+      // Check if there is an in-app referrer or history entry
+      const hasReferrer =
+        document.referrer &&
+        document.referrer.startsWith(window.location.origin);
+
+      if (hasReferrer || window.history.length > 2) {
+        router.back();
+      } else {
+        router.push(fallbackHref);
+      }
     } else {
-      router.replace(fallbackHref);
+      router.push(fallbackHref);
     }
   }
 
   return (
-    <button type="button" className={styles.button} onClick={handleBack}>
+    <button
+      type="button"
+      className={styles.button}
+      onClick={handleBack}
+      aria-label={label}
+    >
       <svg
         aria-hidden="true"
         className={styles.icon}

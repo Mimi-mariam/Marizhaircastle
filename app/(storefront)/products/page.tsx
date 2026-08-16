@@ -23,6 +23,7 @@ interface CatalogPageProps {
     category?: string;
     by?: string;
     q?: string;
+    style?: string;
     texture?: string;
     type?: string;
     length?: string;
@@ -39,7 +40,9 @@ export default async function CatalogPage({ searchParams }: CatalogPageProps) {
   const categorySlug = typeof params.category === "string" ? params.category : undefined;
   const browseByTexture = params.by === "texture";
   const search = typeof params.q === "string" ? params.q : undefined;
-  const texture = typeof params.texture === "string" ? params.texture : undefined;
+  // Normalize texture/style query if slugified e.g. "body-wave" -> "Body Wave"
+  const rawTexture = typeof params.texture === "string" ? params.texture : typeof params.style === "string" ? params.style : undefined;
+  const texture = rawTexture ? rawTexture.replace(/-/g, " ") : undefined;
   const type = typeof params.type === "string" ? params.type : undefined;
   const length = typeof params.length === "string" ? params.length : undefined;
   const minPrice = params.minPrice ? Number(params.minPrice) : undefined;

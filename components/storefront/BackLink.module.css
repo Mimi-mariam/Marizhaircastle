@@ -3,7 +3,7 @@
   align-items: center;
   gap: 8px;
   min-height: 44px;
-  padding: 0 12px 0 4px;
+  padding: 6px 14px 6px 6px;
   border: none;
   border-radius: var(--radius-md);
   background: none;
@@ -12,13 +12,25 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
-  transition: color 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .button:hover {
   color: var(--primary-color);
+  background-color: var(--surface-container-low-color);
+}
+
+.button:active {
+  color: var(--primary-color);
+  background-color: var(--surface-container-color);
+  transform: scale(0.97);
 }
 
 .icon {
   flex-shrink: 0;
+  pointer-events: none;
 }

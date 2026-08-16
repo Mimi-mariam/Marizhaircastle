@@ -421,6 +421,296 @@ async function main() {
     },
   });
 
+  const bodyWaveGluelessWig = await prisma.product.upsert({
+    where: { slug: "luxury-body-wave-glueless-wig" },
+    update: {
+      images: {
+        deleteMany: {},
+        create: [
+          { url: "/images/style-body-wave.jpg", alt: "Luxury Body Wave Glueless HD Lace Wig", position: 0 },
+          { url: "/images/hero-wavy-hair.jpg", alt: "Body Wave Fullness and Bounce Detail", position: 1 },
+        ],
+      },
+    },
+    create: {
+      name: "Luxury Body Wave Glueless HD Lace Wig",
+      slug: "luxury-body-wave-glueless-wig",
+      description: "100% Virgin Hair Body Wave unit featuring pre-plucked hairline and pre-cut HD lace for effortless 5-minute glueless install. High elasticity and bounce.",
+      price: 390000,
+      previousPrice: 440000,
+      type: "Wig",
+      length: "24 inch",
+      texture: "Body Wave",
+      color: "Natural Black (1B)",
+      careInfo: "Wash with warm water and moisturizing conditioner. Finger detangle and air dry for bouncy S-wave curls.",
+      categoryId: wigs.id,
+      images: {
+        create: [
+          { url: "/images/style-body-wave.jpg", alt: "Luxury Body Wave Glueless HD Lace Wig", position: 0 },
+          { url: "/images/hero-wavy-hair.jpg", alt: "Body Wave Fullness and Bounce Detail", position: 1 },
+        ],
+      },
+      variants: {
+        create: [
+          {
+            name: "24 inch — Body Wave",
+            sku: "BWGW-24-NB",
+            inventory: { create: { stock: 8 } },
+          },
+          {
+            name: "28 inch — Body Wave",
+            sku: "BWGW-28-NB",
+            inventory: { create: { stock: 5 } },
+          },
+        ],
+      },
+    },
+  });
+
+  const bluntBobWig = await prisma.product.upsert({
+    where: { slug: "raw-bone-straight-blunt-bob-wig" },
+    update: {
+      images: {
+        deleteMany: {},
+        create: [
+          { url: "/images/mannequin-bob-wig.jpg", alt: "Raw Bone Straight Blunt Cut Bob Wig", position: 0 },
+          { url: "/images/style-bone-straight.jpg", alt: "Blunt Bob Razor Cut Precision", position: 1 },
+        ],
+      },
+    },
+    create: {
+      name: "Raw Bone Straight Blunt Cut Bob Wig",
+      slug: "raw-bone-straight-blunt-bob-wig",
+      description: "Crisp, razor-sharp blunt cut bob wig crafted with 100% raw double drawn Vietnamese hair. Glass shine finish, full ends, and ready to ship.",
+      price: 245000,
+      previousPrice: 280000,
+      type: "Wig",
+      length: "12 inch",
+      texture: "Bone Straight",
+      color: "Natural Black (1B)",
+      careInfo: "Use flat iron at 380°F with heat protectant to maintain sharp perimeter. 24-hour delivery after payment verification.",
+      categoryId: wigs.id,
+      images: {
+        create: [
+          { url: "/images/mannequin-bob-wig.jpg", alt: "Raw Bone Straight Blunt Cut Bob Wig", position: 0 },
+          { url: "/images/style-bone-straight.jpg", alt: "Blunt Bob Razor Cut Precision", position: 1 },
+        ],
+      },
+      variants: {
+        create: [
+          {
+            name: "12 inch — Blunt Bob",
+            sku: "BBB-12-NB",
+            inventory: { create: { stock: 11 } },
+          },
+        ],
+      },
+    },
+  });
+
+  const blondeBalayageWig = await prisma.product.upsert({
+    where: { slug: "honey-blonde-balayage-luxury-wig" },
+    update: {
+      images: {
+        deleteMany: {},
+        create: [
+          { url: "/images/mannequin-blonde-brown-wig.jpg", alt: "Honey Blonde & Warm Brown Balayage Lace Front Wig", position: 0 },
+          { url: "/images/custom-wig-banner.jpg", alt: "Custom Color Balayage Dimensional Tones", position: 1 },
+        ],
+      },
+    },
+    create: {
+      name: "Honey Blonde & Warm Brown Balayage Lace Front Wig",
+      slug: "honey-blonde-balayage-luxury-wig",
+      description: "Custom artisan-colored balayage unit. Seamless blend of caramel brown and honey blonde highlights with dark root melt for supreme luxury depth.",
+      price: 520000,
+      previousPrice: 580000,
+      type: "Wig",
+      length: "26 inch",
+      texture: "Body Wave",
+      color: "Honey Blonde / Caramel Balayage",
+      careInfo: "Use color-safe shampoo and hydrating hair mask weekly. Keep out of direct harsh sunlight when storing.",
+      categoryId: wigs.id,
+      images: {
+        create: [
+          { url: "/images/mannequin-blonde-brown-wig.jpg", alt: "Honey Blonde & Warm Brown Balayage Lace Front Wig", position: 0 },
+          { url: "/images/custom-wig-banner.jpg", alt: "Custom Color Balayage Dimensional Tones", position: 1 },
+        ],
+      },
+      variants: {
+        create: [
+          {
+            name: "26 inch — Honey Blonde Balayage",
+            sku: "HBW-26-BAL",
+            inventory: { create: { stock: 6 } },
+          },
+        ],
+      },
+    },
+  });
+
+  const hdFrontalPiece = await prisma.product.upsert({
+    where: { slug: "ultra-thin-swiss-hd-lace-frontal" },
+    update: {
+      type: "Frontals",
+      images: {
+        deleteMany: {},
+        create: [
+          { url: "/images/hero-wavy-hair.jpg", alt: "Ultra Thin 13x4 Swiss HD Lace Frontal", position: 0 },
+          { url: "/images/style-bone-straight.jpg", alt: "HD Frontal Melt Detail", position: 1 },
+        ],
+      },
+    },
+    create: {
+      name: "Ultra Thin 13x4 Swiss HD Lace Frontal",
+      slug: "ultra-thin-swiss-hd-lace-frontal",
+      description: "Invisible HD lace 13x4 ear-to-ear frontal. Ultra-small single knots, pre-plucked hairline that blends invisibly on all skin tones.",
+      price: 185000,
+      previousPrice: 210000,
+      type: "Frontals",
+      length: "20 inch",
+      texture: "Bone Straight",
+      color: "Natural Black (1B)",
+      careInfo: "Handle lace gently. Bleach knots carefully with 20 vol developer to prevent hair shedding.",
+      categoryId: extensions.id,
+      images: {
+        create: [
+          { url: "/images/hero-wavy-hair.jpg", alt: "Ultra Thin 13x4 Swiss HD Lace Frontal", position: 0 },
+          { url: "/images/style-bone-straight.jpg", alt: "HD Frontal Melt Detail", position: 1 },
+        ],
+      },
+      variants: {
+        create: [
+          {
+            name: "13x4 HD Frontal — 20 inch",
+            sku: "HDF-13X4-20",
+            inventory: { create: { stock: 15 } },
+          },
+        ],
+      },
+    },
+  });
+
+  const hdClosurePiece = await prisma.product.upsert({
+    where: { slug: "seamless-5x5-hd-lace-closure" },
+    update: {
+      type: "Closures",
+      images: {
+        deleteMany: {},
+        create: [
+          { url: "/images/extensions-collection.jpg", alt: "Seamless 5x5 HD Lace Closure", position: 0 },
+        ],
+      },
+    },
+    create: {
+      name: "Seamless 5x5 HD Lace Closure",
+      slug: "seamless-5x5-hd-lace-closure",
+      description: "Premium 5x5 HD lace closure with natural density hairline. Free part styling versatility with 100% virgin human hair.",
+      price: 135000,
+      previousPrice: 155000,
+      type: "Closures",
+      length: "18 inch",
+      texture: "Body Wave",
+      color: "Natural Black (1B)",
+      careInfo: "Wash with gentle sulfate-free shampoo. Air dry flat.",
+      categoryId: extensions.id,
+      images: {
+        create: [
+          { url: "/images/extensions-collection.jpg", alt: "Seamless 5x5 HD Lace Closure", position: 0 },
+        ],
+      },
+      variants: {
+        create: [
+          {
+            name: "5x5 HD Closure — 18 inch",
+            sku: "HDC-5X5-18",
+            inventory: { create: { stock: 20 } },
+          },
+        ],
+      },
+    },
+  });
+
+  const luxuryWrapPonytail = await prisma.product.upsert({
+    where: { slug: "raw-human-hair-wrap-ponytail" },
+    update: {
+      type: "Ponytails",
+      images: {
+        deleteMany: {},
+        create: [
+          { url: "/images/ext-bundles.jpg", alt: "Raw Human Hair Wrap Around Ponytail Extension", position: 0 },
+        ],
+      },
+    },
+    create: {
+      name: "Raw Human Hair Wrap Around Ponytail",
+      slug: "raw-human-hair-wrap-ponytail",
+      description: "Instant high-glam wrap-around ponytail with built-in secure comb and velcro attachment. 100% human hair for heat styling and curling.",
+      price: 165000,
+      previousPrice: 190000,
+      type: "Ponytails",
+      length: "26 inch",
+      texture: "Bone Straight",
+      color: "Natural Black (1B)",
+      careInfo: "Brush gently before inserting into hair bun. Wrap hair band firmly and pin with bobby pins.",
+      categoryId: extensions.id,
+      images: {
+        create: [
+          { url: "/images/ext-bundles.jpg", alt: "Raw Human Hair Wrap Around Ponytail Extension", position: 0 },
+        ],
+      },
+      variants: {
+        create: [
+          {
+            name: "26 inch Wrap Ponytail — Natural Black",
+            sku: "WAP-26-NB",
+            inventory: { create: { stock: 14 } },
+          },
+        ],
+      },
+    },
+  });
+
+  const seamlessClipIns = await prisma.product.upsert({
+    where: { slug: "seamless-clip-in-hair-extensions-set" },
+    update: {
+      type: "Clip-Ins & Tape-Ins",
+      images: {
+        deleteMany: {},
+        create: [
+          { url: "/images/extensions-collection.jpg", alt: "Seamless Clip-in 7-Piece Hair Extension Set", position: 0 },
+        ],
+      },
+    },
+    create: {
+      name: "Seamless Clip-in Hair Extensions (7-Piece Set)",
+      slug: "seamless-clip-in-hair-extensions-set",
+      description: "Ultra-flat silicone band seamless clip-ins. 7 pieces per set (160g) for instant volume and length without damage.",
+      price: 210000,
+      previousPrice: 240000,
+      type: "Clip-Ins & Tape-Ins",
+      length: "22 inch",
+      texture: "Bone Straight",
+      color: "Natural Black (1B)",
+      careInfo: "Unclip carefully before sleeping. Wash after every 15 wears with mild shampoo.",
+      categoryId: extensions.id,
+      images: {
+        create: [
+          { url: "/images/extensions-collection.jpg", alt: "Seamless Clip-in 7-Piece Hair Extension Set", position: 0 },
+        ],
+      },
+      variants: {
+        create: [
+          {
+            name: "22 inch (7-Piece Set / 160g) — Natural Black",
+            sku: "SCI-22-7PC",
+            inventory: { create: { stock: 16 } },
+          },
+        ],
+      },
+    },
+  });
+
   console.log({
     admin,
     wigs,
@@ -430,6 +720,13 @@ async function main() {
     singleDonorBoneStraight,
     layeredVirginWig,
     rawDonorBabyThinBoneStraight,
+    bodyWaveGluelessWig,
+    bluntBobWig,
+    blondeBalayageWig,
+    hdFrontalPiece,
+    hdClosurePiece,
+    luxuryWrapPonytail,
+    seamlessClipIns,
   });
 }
 

@@ -45,20 +45,48 @@ const SLIDES: SlideData[] = [
 export const HeroSlider: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = React.useRef<number | null>(null);
+  const touchEndX = React.useRef<number | null>(null);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
   }, []);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
+  }, []);
+
+  // Handle touch swipe gestures
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsPaused(true);
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current !== null && touchEndX.current !== null) {
+      const diff = touchStartX.current - touchEndX.current;
+      // Minimum swipe distance threshold (40px)
+      if (diff > 40) {
+        nextSlide();
+      } else if (diff < -40) {
+        prevSlide();
+      }
+    }
+    touchStartX.current = null;
+    touchEndX.current = null;
+    // Resume auto-slide after touch interaction
+    setTimeout(() => setIsPaused(false), 4000);
   };
 
   useEffect(() => {
     if (isPaused) return;
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000); // Auto-advance every 5 seconds
+    }, 4500); // Smooth auto-advance every 4.5 seconds
 
     return () => clearInterval(interval);
   }, [nextSlide, isPaused]);
@@ -68,6 +96,9 @@ export const HeroSlider: React.FC = () => {
       className={styles.heroSliderContainer}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
       aria-label="Hero Showcase Slider"
     >
       {SLIDES.map((slide, index) => {
