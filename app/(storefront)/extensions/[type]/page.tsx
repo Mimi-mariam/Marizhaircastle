@@ -9,6 +9,8 @@ import {
 import { BackLink } from "@/components/storefront/BackLink";
 import styles from "./extension-type.module.css";
 
+export const dynamic = "force-dynamic";
+
 interface ExtensionTypePageProps {
   params: Promise<{ type: string }>;
 }

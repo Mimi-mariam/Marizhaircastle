@@ -8,6 +8,8 @@ import { StyleCarousel } from "@/components/storefront/StyleCarousel";
 import { TrustBar } from "@/components/storefront/TrustBar";
 import styles from "./home.module.css";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Marizhaircastle — Your Hair. Your Crown | Luxury Wigs & Extensions",
   description:

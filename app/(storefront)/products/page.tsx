@@ -10,6 +10,8 @@ import { ProductFilters } from "@/components/storefront/ProductFilters";
 import { BackLink } from "@/components/storefront/BackLink";
 import styles from "./catalog.module.css";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Shop Hair Collections | Marizhaircastle",
   description:

@@ -4,6 +4,8 @@ import { getCategories, getCatalogFilterOptions } from "@/lib/catalog/catalog";
 import { prisma } from "@/lib/db/prisma";
 import styles from "./collections.module.css";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Collections & Hair Textures | Marizhaircastle",
   description:

@@ -8,6 +8,8 @@ import { ProductMediaGallery } from "@/components/storefront/ProductMediaGallery
 import { BackLink } from "@/components/storefront/BackLink";
 import styles from "./product.module.css";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {
