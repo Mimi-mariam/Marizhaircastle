@@ -1,17 +1,10 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import Link from "next/link";
+import { ProductCard, type ProductCardProduct } from "@/components/storefront/ProductCard";
 import styles from "./StyleCarousel.module.css";
 
-export type HairStyleItem = {
-  name: string;
-  desc: string;
-  image: string;
-  tag: string;
-};
-
-export function StyleCarousel({ styles: items }: { styles: HairStyleItem[] }) {
+export function StyleCarousel({ products }: { products: ProductCardProduct[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
@@ -28,7 +21,7 @@ export function StyleCarousel({ styles: items }: { styles: HairStyleItem[] }) {
     checkScroll();
     window.addEventListener("resize", checkScroll);
     return () => window.removeEventListener("resize", checkScroll);
-  }, [items]);
+  }, [products]);
 
   // Continuous auto-advance loop
   useEffect(() => {
@@ -39,11 +32,9 @@ export function StyleCarousel({ styles: items }: { styles: HairStyleItem[] }) {
       if (!el) return;
 
       const { scrollLeft, scrollWidth, clientWidth } = el;
-      // Get actual rendered card width plus gap
       const firstCard = el.firstElementChild as HTMLElement | null;
       const step = firstCard ? firstCard.offsetWidth + 16 : 280;
 
-      // If reached end, scroll back to start, else advance
       if (scrollLeft + clientWidth >= scrollWidth - 20) {
         el.scrollTo({ left: 0, behavior: "smooth" });
       } else {
@@ -69,7 +60,7 @@ export function StyleCarousel({ styles: items }: { styles: HairStyleItem[] }) {
     <div className={styles.wrapper}>
       <div className={styles.headerRow}>
         <div>
-          <span className={styles.eyebrow}>Discover Textures</span>
+          <span className={styles.eyebrow}>Featured Textures & Units</span>
           <h2 className={styles.title}>Shop By Style</h2>
         </div>
         <div className={styles.controls}>
@@ -102,32 +93,14 @@ export function StyleCarousel({ styles: items }: { styles: HairStyleItem[] }) {
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => {
-          // Resume auto-scroll after 3 seconds following touch release
           setTimeout(() => setIsPaused(false), 3000);
         }}
         onTouchCancel={() => setIsPaused(false)}
       >
-        {items.map((item) => (
-          <Link
-            key={item.tag}
-            href={`/products?texture=${encodeURIComponent(item.tag)}`}
-            className={styles.card}
-          >
-            <div className={styles.imageWrapper}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={item.image}
-                alt={`Marizhaircastle ${item.name} Hair Style`}
-                className={styles.image}
-                loading="lazy"
-              />
-            </div>
-            <div className={styles.body}>
-              <h3 className={styles.name}>{item.name}</h3>
-              <p className={styles.desc}>{item.desc}</p>
-              <span className={styles.linkText}>Explore Collection →</span>
-            </div>
-          </Link>
+        {products.map((product) => (
+          <div key={product.id} className={styles.slideItem}>
+            <ProductCard product={product} />
+          </div>
         ))}
       </div>
     </div>

@@ -190,14 +190,33 @@ export async function getActiveProducts(params?: string | CatalogFilterParams) {
 
 export async function getFeaturedProducts(limit = 4) {
   try {
+    // Curate flagship products including Bone Straight, Pixie Curls, and luxury units
     const products = await prisma.product.findMany({
+      where: {
+        active: true,
+        archived: false,
+        category: {
+          slug: "wigs",
+        },
+      },
+      include: productInclude,
+      orderBy: { createdAt: "desc" },
+      take: limit,
+    });
+
+    if (products.length >= limit) {
+      return serializeProducts(products);
+    }
+
+    // Fallback to all active products if wig count is below limit
+    const fallbackProducts = await prisma.product.findMany({
       where: { active: true, archived: false },
       include: productInclude,
       orderBy: { createdAt: "desc" },
       take: limit,
     });
 
-    return serializeProducts(products);
+    return serializeProducts(fallbackProducts);
   } catch (error) {
     console.error("getFeaturedProducts error:", error);
     return [];

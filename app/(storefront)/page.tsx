@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getFeaturedProducts, getCategories } from "@/lib/catalog/catalog";
+import {
+  getFeaturedProducts,
+  getCategories,
+  getActiveProducts,
+} from "@/lib/catalog/catalog";
 import { ProductCard } from "@/components/storefront/ProductCard";
 import { Card } from "@/components/ui/Card";
 import { HeroSlider } from "@/components/storefront/HeroSlider";
@@ -17,9 +21,10 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const [featured, categories] = await Promise.all([
-    getFeaturedProducts(6),
+  const [featured, categories, allProducts] = await Promise.all([
+    getFeaturedProducts(4),
     getCategories(),
+    getActiveProducts(),
   ]);
 
   const hairStyles = [
@@ -125,7 +130,7 @@ export default async function HomePage() {
 
       {/* 4. SHOP BY STYLE CAROUSEL */}
       <section className={styles.section}>
-        <StyleCarousel styles={hairStyles} />
+        <StyleCarousel products={allProducts.length > 0 ? allProducts : featured} />
       </section>
 
       {/* 5. EDITORIAL FEATURE SPLIT 1: CUSTOMIZE YOUR WIG */}
@@ -168,7 +173,7 @@ export default async function HomePage() {
               Custom Colored Perfection
             </h2>
             <div>
-              <Link href="/products" className={styles.curateButton}>
+              <Link href="/custom-color" className={styles.curateButton}>
                 Curate Your Color →
               </Link>
             </div>
@@ -192,7 +197,7 @@ export default async function HomePage() {
               Ready To Ship Luxury
             </h2>
             <div>
-              <Link href="/products" className={styles.curateButton}>
+              <Link href="/ready-to-ship" className={styles.curateButton}>
                 Shop Ready To Ship →
               </Link>
             </div>

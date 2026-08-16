@@ -47,6 +47,22 @@ export const HeroSlider: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const touchStartX = React.useRef<number | null>(null);
   const touchEndX = React.useRef<number | null>(null);
+  const resumeTimer = React.useRef<number | null>(null);
+
+  // Schedule auto-play to resume; clears any pending timer first so rapid
+  // touch end/cancel events don't stack multiple timeouts.
+  const resumeAutoPlay = useCallback(() => {
+    if (resumeTimer.current) window.clearTimeout(resumeTimer.current);
+    resumeTimer.current = window.setTimeout(() => {
+      setIsPaused(false);
+    }, 4000);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimer.current) window.clearTimeout(resumeTimer.current);
+    };
+  }, []);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
@@ -79,7 +95,16 @@ export const HeroSlider: React.FC = () => {
     touchStartX.current = null;
     touchEndX.current = null;
     // Resume auto-slide after touch interaction
-    setTimeout(() => setIsPaused(false), 4000);
+    resumeAutoPlay();
+  };
+
+  // iOS Safari fires touchcancel (not touchend) when it intercepts the touch
+  // to scroll the page. Without this, isPaused would stay true forever and the
+  // slider would freeze/stagnate on mobile. Resume here too.
+  const handleTouchCancel = () => {
+    touchStartX.current = null;
+    touchEndX.current = null;
+    resumeAutoPlay();
   };
 
   useEffect(() => {
@@ -99,6 +124,7 @@ export const HeroSlider: React.FC = () => {
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchCancel}
       aria-label="Hero Showcase Slider"
     >
       {SLIDES.map((slide, index) => {

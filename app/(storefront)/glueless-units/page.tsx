@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { prisma } from "@/lib/db/prisma";
+import { getActiveProducts } from "@/lib/catalog/catalog";
 import { gluelessUnitType } from "@/lib/glueless/glueless";
+import { ProductCard } from "@/components/storefront/ProductCard";
+import type { ProductCardProduct } from "@/components/storefront/ProductCard";
 import { BackLink } from "@/components/storefront/BackLink";
 import styles from "./glueless.module.css";
 
@@ -12,27 +14,6 @@ export const metadata: Metadata = {
   description:
     "Shop ready-to-wear glueless wigs and full lace units at Marizhaircastle — install effortlessly with no adhesive, no mess. Fast 24-hour delivery in Nigeria.",
 };
-
-async function getGluelessTextures() {
-  const grouped = await prisma.product.groupBy({
-    by: ["texture"],
-    where: {
-      active: true,
-      archived: false,
-      type: gluelessUnitType.slug,
-      texture: { not: null },
-    },
-    _count: { id: true },
-  });
-
-  return grouped
-    .filter((g) => typeof g.texture === "string" && g.texture.trim().length > 0)
-    .map((g) => ({
-      texture: (g.texture as string).trim(),
-      count: g._count.id,
-    }))
-    .sort((a, b) => a.texture.localeCompare(b.texture));
-}
 
 const textureVisuals: Record<string, { desc: string; image: string }> = {
   "bone straight": {
@@ -53,9 +34,38 @@ const textureVisuals: Record<string, { desc: string; image: string }> = {
   },
 };
 
+interface TextureGroup {
+  key: string;
+  label: string;
+  count: number;
+  products: ProductCardProduct[];
+}
+
 export default async function GluelessUnitsPage() {
-  const textures = await getGluelessTextures();
-  const { name, slug, desc, image, tag } = gluelessUnitType;
+  const products = await getActiveProducts({ type: gluelessUnitType.slug });
+  const { name, slug, desc, tag } = gluelessUnitType;
+
+  const groups: TextureGroup[] = [];
+  const groupByKey = new Map<string, TextureGroup>();
+
+  for (const p of products) {
+    const rawTex = p.texture?.trim() || "Premium";
+    const key = rawTex.toLowerCase();
+    let group = groupByKey.get(key);
+    if (!group) {
+      group = { key, label: rawTex, count: 0, products: [] };
+      groupByKey.set(key, group);
+      groups.push(group);
+    }
+    group.count += 1;
+    group.products.push(p as ProductCardProduct);
+  }
+
+  const sortedGroups = [...groups].sort((a, b) =>
+    a.label.localeCompare(b.label)
+  );
+
+  const totalProducts = products.length;
 
   return (
     <div className={styles.page}>
@@ -67,99 +77,77 @@ export default async function GluelessUnitsPage() {
         <span className={styles.eyebrow}>{tag}</span>
         <h1 className={styles.title}>{name}</h1>
         <p className={styles.subtitle}>
-          {desc}. Choose a texture below to browse every {name.toLowerCase()}{" "}
-          option we carry.
+          {desc}. Browse every {name.toLowerCase()} we carry below — tap any
+          item to view details or add it straight to your cart.
         </p>
       </div>
 
-      <section className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>By Texture</h2>
-          <p className={styles.sectionDesc}>
-            {name} come in different textures and finishes. Tap a texture to
-            explore it.
-          </p>
-        </div>
+      {/* Quick texture jump links */}
+      {sortedGroups.length > 0 && (
+        <nav className={styles.chipRow} aria-label="Jump to a glueless texture">
+          {sortedGroups.map((g) => (
+            <a key={g.key} href={`#texture-${g.key.replace(/\s+/g, "-")}`} className={styles.chip}>
+              {g.label} ({g.count})
+            </a>
+          ))}
+          <Link href={`/products?type=${encodeURIComponent(slug)}`} className={styles.chip}>
+            Shop All {name} →
+          </Link>
+        </nav>
+      )}
 
-        {textures.length > 0 ? (
-          <div className={styles.typeGrid}>
-            {textures.map((tex) => {
-              const visual = textureVisuals[tex.texture.toLowerCase()];
-              const cardImage = visual?.image || image;
-              return (
-                <Link
-                  key={tex.texture}
-                  href={`/products?type=${encodeURIComponent(
-                    slug
-                  )}&texture=${encodeURIComponent(tex.texture)}`}
-                  className={styles.typeCard}
-                >
-                  <div className={styles.typeImageWrapper}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={cardImage}
-                      alt={`Marizhaircastle ${tex.texture} ${name.toLowerCase()}`}
-                      className={styles.typeImage}
-                    />
-                  </div>
-                  <div className={styles.typeBody}>
-                    <span className={styles.typeTag}>{tag}</span>
-                    <h3 className={styles.typeName}>
-                      {tex.texture} {name.toLowerCase()}
-                    </h3>
-                    <p className={styles.typeDesc}>
-                      {visual?.desc ||
-                        `Premium ${tex.texture} in a ${name.toLowerCase()} finish.`}
-                    </p>
-                    <span className={styles.typeAction}>
-                      Shop {tex.count} item{tex.count === 1 ? "" : "s"} →
-                    </span>
-                  </div>
-                </Link>
-              );
-            })}
+      {products.length > 0 ? (
+        <>
+          {sortedGroups.map((g) => {
+            const visual = textureVisuals[g.key];
+            return (
+              <section
+                key={g.key}
+                id={`texture-${g.key.replace(/\s+/g, "-")}`}
+                className={styles.section}
+              >
+                <div className={styles.sectionHeader}>
+                  <h2 className={styles.sectionTitle}>{g.label}</h2>
+                  <p className={styles.sectionDesc}>
+                    {visual?.desc ||
+                      `Premium ${g.label} in a ${name.toLowerCase()} finish.`}{" "}
+                    {g.count} unit{g.count === 1 ? "" : "s"} available.
+                  </p>
+                </div>
 
+                <div className={styles.productGrid}>
+                  {g.products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+
+          <div className={styles.allFooter}>
             <Link
               href={`/products?type=${encodeURIComponent(slug)}`}
-              className={`${styles.typeCard} ${styles.allCard}`}
+              className={styles.allButton}
             >
-              <div className={styles.typeImageWrapper}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={image}
-                  alt={`All ${name}`}
-                  className={styles.typeImage}
-                />
-              </div>
-              <div className={styles.typeBody}>
-                <span className={styles.typeTag}>Everything</span>
-                <h3 className={styles.typeName}>Shop All {name}</h3>
-                <p className={styles.typeDesc}>
-                  Browse the complete range of {name.toLowerCase()} across every
-                  texture and finish.
-                </p>
-                <span className={styles.typeAction}>View All {name} →</span>
-              </div>
+              Browse All {totalProducts} {name.toLowerCase()} →
             </Link>
           </div>
-        ) : (
-          <div className={styles.empty}>
-            <div className={styles.emptyIcon} aria-hidden="true">
-              📦
-            </div>
-            <h2 className={styles.emptyTitle}>
-              New {name} arriving soon
-            </h2>
-            <p className={styles.emptyDescription}>
-              We don&apos;t have stock listed under {name.toLowerCase()} just
-              yet. Check back shortly or browse our other collections.
-            </p>
-            <Link href="/collections" className={styles.emptyLink}>
-              Explore other collections
-            </Link>
+        </>
+      ) : (
+        <div className={styles.empty}>
+          <div className={styles.emptyIcon} aria-hidden="true">
+            📦
           </div>
-        )}
-      </section>
+          <h2 className={styles.emptyTitle}>New {name} arriving soon</h2>
+          <p className={styles.emptyDescription}>
+            We don&apos;t have stock listed under {name.toLowerCase()} just
+            yet. Check back shortly or browse our other collections.
+          </p>
+          <Link href="/collections" className={styles.emptyLink}>
+            Explore other collections
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
