@@ -1,0 +1,187 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6, 24px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--font-size-2xl, 1.5rem);
+  font-family: var(--font-family-display, 'Playfair Display', serif);
+  font-weight: 700;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  margin: 0;
+}
+
+.subtitle {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  margin: var(--spacing-1, 4px) 0 0 0;
+}
+
+.searchBarWrapper {
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  border-radius: var(--radius-lg, 12px);
+  padding: 12px 16px;
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .searchForm {
+    max-width: 480px;
+  }
+}
+
+.searchInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  pointer-events: none;
+  line-height: 0;
+}
+
+.searchInput {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  font-size: 0.875rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+}
+
+.searchBtn {
+  height: 40px;
+  padding: 0 16px;
+  background-color: var(--surface-container-high-color, #f5f5f4);
+  color: var(--on-surface-color, #1c1917);
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  border-radius: var(--radius-md, 8px);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clearSearchBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--error-color, #dc2626);
+  border-radius: var(--radius-md, 8px);
+  color: var(--error-color, #dc2626);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.clearSearchBtn:hover {
+  background-color: rgba(220, 38, 38, 0.08);
+}
+
+
+
+.tabs {
+  display: flex;
+  gap: var(--spacing-2, 8px);
+  overflow-x: auto;
+  padding-bottom: var(--spacing-2, 8px);
+  border-bottom: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+}
+
+.tab {
+  padding: var(--spacing-2, 8px) var(--spacing-4, 16px);
+  border-radius: var(--radius-md, 8px);
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.tab-active {
+  background-color: var(--primary-container-color, hsl(346, 100%, 85%));
+  color: var(--on-primary-container-color, hsl(333, 100%, 28%));
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+}
+
+.order-link {
+  font-weight: 700;
+  color: var(--primary-color, hsl(341, 88%, 65%));
+  text-decoration: none;
+}
+
+.customer-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.customer-phone {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}
+
+.items-count {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}
+
+.view-btn {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--primary-color, hsl(341, 88%, 65%));
+  text-decoration: none;
+}
+
+.empty {
+  padding: var(--spacing-8, 32px);
+  text-align: center;
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}

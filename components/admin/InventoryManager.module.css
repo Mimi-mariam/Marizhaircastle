@@ -1,0 +1,184 @@
+.container {
+  width: 100%;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  border-radius: var(--radius-lg, 12px);
+  padding: 12px 16px;
+}
+
+@media (min-width: 768px) {
+  .toolbar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .searchBox {
+    max-width: 380px;
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  pointer-events: none;
+  line-height: 0;
+}
+
+.searchInput {
+  width: 100%;
+  height: 40px;
+  padding: 8px 32px 8px 36px;
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  font-size: 0.875rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+}
+
+.clearBtn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  cursor: pointer;
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm, 4px);
+  font-size: 0.875rem;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.clearBtn:hover {
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  background-color: var(--surface-container-high-color, #e7e5e4);
+}
+
+
+.filterGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filterLabel {
+  font-size: 0.875rem;
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  white-space: nowrap;
+}
+
+.filterSelect {
+  height: 40px;
+  padding: 0 34px 0 12px;
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  font-size: 0.875rem;
+  font-weight: 500;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px 14px;
+  cursor: pointer;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+}
+
+
+.emptyState {
+  padding: 32px 16px;
+  text-align: center;
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}
+
+
+.product-name {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+}
+
+.variant-info {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}
+
+.stock-input {
+  width: 80px;
+  min-height: 36px;
+  padding: 4px 8px;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--outline-color, hsl(350, 5%, 78%));
+  font-family: inherit;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+}
+
+.stock-input:focus {
+  outline: none;
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+}
+
+.action-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2, 8px);
+}
+
+.msg {
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 600;
+}
+
+.msg-success {
+  color: hsl(142, 76%, 20%);
+}
+
+.msg-error {
+  color: var(--error-color, hsl(6, 70%, 45%));
+}

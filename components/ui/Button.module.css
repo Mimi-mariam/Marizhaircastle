@@ -1,0 +1,119 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-2, 8px);
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  position: relative;
+  white-space: nowrap;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--primary-color, hsl(341, 88%, 65%));
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Sizes */
+.sm {
+  padding: var(--spacing-1, 4px) var(--spacing-3, 12px);
+  font-size: var(--font-size-sm, 0.875rem);
+  min-height: 36px;
+}
+
+.md {
+  padding: var(--spacing-2, 8px) var(--spacing-4, 16px);
+  font-size: var(--font-size-base, 1rem);
+  min-height: 44px;
+}
+
+.lg {
+  padding: var(--spacing-3, 12px) var(--spacing-6, 24px);
+  font-size: var(--font-size-lg, 1.125rem);
+  min-height: 48px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--primary-color, hsl(341, 88%, 65%));
+  color: var(--on-primary-color, #ffffff);
+}
+
+.primary:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.secondary {
+  background-color: var(--secondary-color, hsl(339, 37%, 42%));
+  color: var(--on-secondary-color, #ffffff);
+}
+
+.secondary:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.outline {
+  background-color: transparent;
+  border-color: var(--outline-color, hsl(350, 5%, 78%));
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+}
+
+.outline:hover:not(:disabled) {
+  background-color: var(--surface-container-low-color, hsl(350, 75%, 97%));
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--surface-container-low-color, hsl(350, 75%, 97%));
+}
+
+.danger {
+  background-color: var(--error-color, hsl(6, 70%, 45%));
+  color: var(--on-error-color, #ffffff);
+}
+
+.danger:hover:not(:disabled) {
+  opacity: 0.92;
+}
+
+/* Spinner */
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

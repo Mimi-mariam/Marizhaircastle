@@ -1,0 +1,42 @@
+.wrapper {
+  background: var(--surface-color, #ffffff);
+  border-bottom: 1px solid var(--outline-variant-color, #f0e6eb);
+  padding: 16px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.text {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--on-surface-color, #231d20);
+  letter-spacing: 0.01em;
+}
+
+@media (max-width: 600px) {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+}

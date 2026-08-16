@@ -1,0 +1,126 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 16px;
+  background-color: var(--surface-container-low-color, #f5f5f4);
+  border: 1px solid var(--outline-variant-color, #e7e5e4);
+  border-radius: var(--radius-lg, 12px);
+}
+
+.title {
+  font-family: var(--font-family-display), serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--on-surface-color, #1c1917);
+  margin: 0;
+}
+
+.intro {
+  font-size: 0.875rem;
+  color: var(--on-surface-variant-color, #78716c);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldLabel {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--on-surface-color, #1c1917);
+}
+
+.select,
+.input {
+  min-height: 44px;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid var(--outline-variant-color, #e7e5e4);
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--surface-color, #ffffff);
+  color: var(--on-surface-color, #1c1917);
+  font-size: 0.875rem;
+}
+
+.select {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.measurements {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px dashed var(--outline-variant-color, #e7e5e4);
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--surface-color, #ffffff);
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border-radius: var(--radius-md, 8px);
+  background-color: var(--surface-color, #ffffff);
+  border: 1px solid var(--outline-variant-color, #e7e5e4);
+}
+
+.summaryLabel {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary-color, #d4af37);
+}
+
+.summaryRows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+}
+
+.summaryRow {
+  display: flex;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.summaryRow dt {
+  color: var(--on-surface-variant-color, #78716c);
+  font-weight: 600;
+  min-width: 72px;
+}
+
+.summaryRow dd {
+  margin: 0;
+  color: var(--on-surface-color, #1c1917);
+  font-weight: 500;
+}
+
+.note {
+  font-size: 0.8125rem;
+  color: var(--on-surface-variant-color, #78716c);
+  margin: 4px 0 0;
+  line-height: 1.5;
+}

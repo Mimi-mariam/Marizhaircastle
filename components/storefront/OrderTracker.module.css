@@ -1,0 +1,182 @@
+.trackerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6, 24px);
+  margin-bottom: var(--spacing-6, 24px);
+  width: 100%;
+}
+
+.timerBanner {
+  background: linear-gradient(135deg, hsl(340, 15%, 12%) 0%, hsl(340, 20%, 18%) 100%);
+  border: 1px solid var(--primary-color, hsl(341, 88%, 65%));
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--spacing-4, 16px) var(--spacing-5, 20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-3, 12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+@media (min-width: 640px) {
+  .timerBanner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.timerHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+@media (min-width: 640px) {
+  .timerHeader {
+    align-items: flex-start;
+  }
+}
+
+.timerBadge {
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 700;
+  color: #ff7597;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.timerSub {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.timerCountdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.timeBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 10px;
+  border-radius: var(--radius-md, 8px);
+  min-width: 48px;
+}
+
+.timeVal {
+  font-size: var(--font-size-lg, 1.125rem);
+  font-weight: 800;
+  color: #ffffff;
+  font-family: monospace;
+}
+
+.timeUnit {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.colon {
+  font-size: var(--font-size-lg, 1.125rem);
+  font-weight: 800;
+  color: #ff7597;
+}
+
+.expiredNotice {
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 700;
+  color: #4ade80;
+}
+
+/* Timeline */
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-4, 16px);
+  position: relative;
+  padding-left: var(--spacing-2, 8px);
+}
+
+@media (min-width: 640px) {
+  .timeline {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-2, 8px);
+    padding-left: 0;
+  }
+}
+
+.stepItem {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3, 12px);
+  opacity: 0.45;
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .stepItem {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--spacing-2, 8px);
+  }
+}
+
+.completedStep {
+  opacity: 1;
+}
+
+.currentStep {
+  opacity: 1;
+}
+
+.stepIconWrapper {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface-container-high-color, hsl(352, 20%, 92%));
+  border: 2px solid var(--outline-color, hsl(350, 5%, 78%));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 800;
+  color: var(--on-surface-variant-color, hsl(351, 8%, 45%));
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.completedStep .stepIconWrapper {
+  background: var(--primary-color, hsl(341, 88%, 65%));
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+  color: #ffffff;
+}
+
+.currentStep .stepIconWrapper {
+  background: var(--surface-container-lowest-color, #ffffff);
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+  color: var(--primary-color, hsl(341, 88%, 65%));
+  box-shadow: 0 0 0 4px var(--primary-container-color, hsl(346, 100%, 85%));
+}
+
+.stepTitle {
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 700;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  margin: 0 0 2px 0;
+}
+
+.stepDesc {
+  font-size: 0.7rem;
+  color: var(--on-surface-variant-color, hsl(351, 8%, 45%));
+  margin: 0;
+  line-height: 1.3;
+}

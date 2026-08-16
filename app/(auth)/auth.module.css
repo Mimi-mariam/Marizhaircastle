@@ -1,0 +1,17 @@
+.shell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  background: var(--surface-container-low-color);
+}
+
+.card {
+  width: 100%;
+  max-width: 416px;
+  padding: 32px 24px;
+  border-radius: var(--radius-lg);
+  background: var(--surface-color);
+  box-shadow: var(--shadow-md);
+}

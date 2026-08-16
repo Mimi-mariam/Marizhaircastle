@@ -1,0 +1,272 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-6, 24px) var(--spacing-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-6, 24px);
+}
+
+.header {
+  border-bottom: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  padding-bottom: var(--spacing-4, 16px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4, 16px);
+}
+
+.adminBanner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3, 12px);
+  background-color: var(--surface-container-low-color, hsl(350, 75%, 97%));
+  border: 1px solid var(--primary-color, hsl(341, 88%, 65%));
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--spacing-4, 16px);
+  margin-top: var(--spacing-2, 8px);
+}
+
+@media (min-width: 768px) {
+  .adminBanner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-5, 20px);
+  }
+}
+
+.adminBannerContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1, 4px);
+}
+
+.adminBannerTitle {
+  font-size: var(--font-size-base, 1rem);
+  font-weight: 700;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+}
+
+.adminBannerText {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  margin: 0;
+}
+
+.adminPortalButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color, hsl(341, 88%, 65%));
+  color: var(--on-primary-color, #ffffff);
+  padding: var(--spacing-2, 8px) var(--spacing-5, 20px);
+  border-radius: var(--radius-md, 8px);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-sm, 0.875rem);
+  white-space: nowrap;
+  min-height: 44px;
+  transition: opacity 0.2s ease;
+}
+
+.adminPortalButton:hover {
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.badge {
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-color, hsl(341, 88%, 65%));
+  letter-spacing: 0.05em;
+}
+
+.title {
+  font-size: var(--font-size-2xl, 1.5rem);
+  font-family: var(--font-family-display, 'Playfair Display', serif);
+  font-weight: 700;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  margin: var(--spacing-1, 4px) 0;
+}
+
+.subtitle {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-6, 24px);
+}
+
+.orders-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4, 16px);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-title {
+  font-size: var(--font-size-lg, 1.125rem);
+  font-weight: 700;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  margin: 0;
+}
+
+.orders-count {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4, 16px);
+}
+
+.order-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3, 12px);
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.order-number {
+  display: block;
+  font-weight: 700;
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+}
+
+.order-date {
+  display: block;
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}
+
+.sla-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2, 8px);
+  background-color: var(--surface-container-low-color, hsl(350, 75%, 97%));
+  padding: var(--spacing-2, 8px) var(--spacing-3, 12px);
+  border-radius: var(--radius-md, 8px);
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+}
+
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2, 8px);
+  padding: var(--spacing-2, 8px) 0;
+  border-top: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  border-bottom: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-1, 4px);
+}
+
+.total-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.total-label {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+}
+
+.total-amount {
+  font-size: var(--font-size-base, 1rem);
+  font-weight: 700;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+}
+
+.track-link {
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  color: var(--primary-color, hsl(341, 88%, 65%));
+  text-decoration: none;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4, 16px);
+}
+
+.promise-card,
+.support-card {
+  background-color: var(--surface-container-low-color, hsl(350, 75%, 97%));
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+}
+
+.promise-title {
+  font-size: var(--font-size-base, 1rem);
+  font-weight: 700;
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  margin: 0 0 var(--spacing-2, 8px) 0;
+}
+
+.promise-desc {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--on-surface-variant-color, hsl(340, 2%, 28%));
+  line-height: 1.5;
+  margin: 0;
+}
+
+.empty {
+  padding: var(--spacing-8, 32px);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-4, 16px);
+}
+
+.browse-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color, hsl(341, 88%, 65%));
+  color: var(--on-primary-color, #ffffff);
+  padding: var(--spacing-2, 8px) var(--spacing-4, 16px);
+  border-radius: var(--radius-md, 8px);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-size-sm, 0.875rem);
+  min-height: 44px;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+  }
+}

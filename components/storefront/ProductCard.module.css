@@ -1,0 +1,208 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  background: var(--surface-color);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md, 0 10px 25px rgba(0, 0, 0, 0.08));
+}
+
+.mediaContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--surface-container-low-color);
+}
+
+.mediaLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mediaLink:hover {
+  text-decoration: none;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+/* STOCK BADGES */
+.badgeContainer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.badge {
+  font-size: 0.6875rem;
+  font-weight: var(--font-weight-bold, 700);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm, 4px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.badgeVideo {
+  background: linear-gradient(135deg, #e1306c, #f77737);
+  color: #ffffff;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.badgeInStock {
+  background-color: rgba(20, 83, 45, 0.85);
+  color: #ffffff;
+}
+
+.badgeLowStock {
+  background-color: rgba(194, 65, 12, 0.9);
+  color: #ffffff;
+}
+
+.badgeOutOfStock {
+  background-color: rgba(127, 29, 29, 0.9);
+  color: #ffffff;
+}
+
+/* QUICK ADD CART BUTTON */
+.cartButton {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--surface-color, #ffffff);
+  color: var(--on-surface-color, hsl(340, 10%, 11%));
+  border: 1px solid var(--outline-color, hsl(350, 5%, 82%));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.cartButton:hover {
+  background: var(--primary-color, hsl(341, 88%, 65%));
+  color: #ffffff;
+  border-color: var(--primary-color, hsl(341, 88%, 65%));
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(255, 117, 151, 0.35);
+}
+
+.cartButtonSuccess {
+  background: #16a34a !important;
+  color: #ffffff !important;
+  border-color: #16a34a !important;
+  transform: scale(1.05);
+}
+
+.cartIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.loadingSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-top-color: var(--primary-color, hsl(341, 88%, 65%));
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.imageFallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: var(--font-family-display), serif;
+  font-size: var(--font-size-5xl);
+  color: var(--primary-color);
+  background: var(--primary-container-color);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+}
+
+.category {
+  font-size: var(--font-size-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  color: var(--primary-color);
+  font-weight: var(--font-weight-semibold);
+}
+
+.title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-tight);
+}
+
+.title a {
+  color: var(--on-surface-color);
+  transition: color 0.2s ease;
+}
+
+.title a:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.price {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--on-surface-variant-color);
+}
+
+.previousPrice {
+  font-size: var(--font-size-sm);
+  color: var(--outline-color, hsl(350, 5%, 78%));
+  text-decoration: line-through;
+}

@@ -1,0 +1,26 @@
+.card {
+  background-color: var(--surface-container-lowest-color, #ffffff);
+  border-radius: var(--radius-lg, 12px);
+  padding: var(--spacing-4, 16px);
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.default {
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+}
+
+.outlined {
+  border: 1px solid var(--outline-color, hsl(350, 5%, 78%));
+}
+
+.elevated {
+  border: 1px solid var(--outline-variant-color, hsl(351, 28%, 95%));
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 768px) {
+  .card {
+    padding: var(--spacing-6, 24px);
+  }
+}

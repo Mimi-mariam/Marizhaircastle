@@ -1,0 +1,24 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 12px 0 4px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--on-surface-variant-color);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.button:hover {
+  color: var(--primary-color);
+}
+
+.icon {
+  flex-shrink: 0;
+}

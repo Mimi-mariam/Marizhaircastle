@@ -1,0 +1,298 @@
+:root {
+  /* Color roles - light */
+  --primary-color: hsl(341, 88%, 65%);
+  --on-primary-color: hsl(0, 0%, 100%);
+  --primary-container-color: hsl(346, 100%, 85%);
+  --on-primary-container-color: hsl(333, 100%, 28%);
+  --secondary-color: hsl(339, 37%, 42%);
+  --on-secondary-color: hsl(0, 0%, 100%);
+  --secondary-container-color: hsl(342, 100%, 85%);
+  --on-secondary-container-color: hsl(338, 46%, 32%);
+  --tertiary-color: hsl(338, 100%, 37%);
+  --on-tertiary-color: hsl(0, 0%, 100%);
+  --tertiary-container-color: hsl(353, 100%, 85%);
+  --on-tertiary-container-color: hsl(339, 100%, 28%);
+  --error-color: hsl(6, 70%, 45%);
+  --on-error-color: hsl(0, 0%, 100%);
+  --error-container-color: hsl(6, 86%, 90%);
+  --on-error-container-color: hsl(6, 84%, 25%);
+  --background-color: hsl(300, 100%, 99%);
+  --on-background-color: hsl(340, 10%, 11%);
+  --surface-color: hsl(300, 100%, 99%);
+  --on-surface-color: hsl(340, 10%, 11%);
+  --surface-variant-color: hsl(350, 11%, 89%);
+  --on-surface-variant-color: hsl(340, 2%, 28%);
+  --outline-color: hsl(350, 5%, 78%);
+  --outline-variant-color: hsl(351, 28%, 95%);
+  --inverse-surface-color: hsl(340, 6%, 20%);
+  --inverse-on-surface-color: hsl(350, 55%, 96%);
+  --inverse-primary-color: hsl(346, 100%, 85%);
+  --surface-dim-color: hsl(345, 18%, 87%);
+  --surface-bright-color: hsl(0, 100%, 99%);
+  --surface-container-lowest-color: hsl(0, 0%, 100%);
+  --surface-container-low-color: hsl(350, 75%, 97%);
+  --surface-container-color: hsl(350, 43%, 95%);
+  --surface-container-high-color: hsl(345, 30%, 92%);
+  --surface-container-highest-color: hsl(0, 100%, 99%);
+
+  /* Base typography */
+  --font-family-sans: 'Open Sans';
+  --font-family-display: 'Playfair Display';
+  --font-family-mono: 'JetBrains Mono';
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+  --font-size-7xl: 4.5rem;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --line-height-none: 1;
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+  --letter-spacing-tighter: -0.05em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+
+  /* Spacing */
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-7: 1.75rem;
+  --spacing-8: 2rem;
+  --spacing-9: 2.25rem;
+  --spacing-10: 2.5rem;
+  --spacing-11: 2.75rem;
+  --spacing-12: 3rem;
+  --spacing-14: 3.5rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-28: 7rem;
+  --spacing-32: 8rem;
+  --spacing-36: 9rem;
+  --spacing-40: 10rem;
+  --spacing-44: 11rem;
+  --spacing-48: 12rem;
+  --spacing-52: 13rem;
+  --spacing-56: 14rem;
+  --spacing-60: 15rem;
+  --spacing-64: 16rem;
+  --spacing-72: 18rem;
+  --spacing-80: 20rem;
+  --spacing-96: 24rem;
+  --spacing-px: 1px;
+  --spacing-0-5: 0.125rem;
+  --spacing-1-5: 0.375rem;
+  --spacing-2-5: 0.625rem;
+  --spacing-3-5: 0.875rem;
+
+  /* Border radius */
+  --radius-none: 0;
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.08), 0 4px 6px rgba(0,0,0,0.03);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.10), 0 8px 10px rgba(0,0,0,0.04);
+  --shadow-2xl: 0 25px 50px rgba(0,0,0,0.15);
+  --shadow-inner: inset 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-glow-primary: 0 0 20px hsla(256, 34%, 48%, 0.35);
+  --shadow-glow-secondary: 0 0 20px hsla(259, 11%, 40%, 0.35);
+  --shadow-glow-tertiary: 0 0 20px hsla(340, 21%, 41%, 0.35);
+  --shadow-glow-error: 0 0 20px hsla(0, 54%, 41%, 0.35);
+
+  /* Elevation */
+  --elevation-0: none;
+  --elevation-1: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --elevation-2: 0 3px 6px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.06);
+  --elevation-3: 0 6px 12px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.06);
+  --elevation-4: 0 10px 20px rgba(0,0,0,0.12), 0 3px 6px rgba(0,0,0,0.06);
+  --elevation-5: 0 15px 30px rgba(0,0,0,0.14), 0 5px 10px rgba(0,0,0,0.08);
+}
+
+[data-theme="dark"] {
+  /* Color roles - dark */
+  --primary-color: hsl(341, 88%, 65%);
+  --on-primary-color: hsl(334, 100%, 20%);
+  --primary-container-color: hsl(333, 100%, 28%);
+  --on-primary-container-color: hsl(349, 100%, 93%);
+  --secondary-color: hsl(342, 100%, 85%);
+  --on-secondary-color: hsl(335, 63%, 22%);
+  --secondary-container-color: hsl(338, 46%, 32%);
+  --on-secondary-container-color: hsl(346, 100%, 93%);
+  --tertiary-color: hsl(353, 100%, 85%);
+  --on-tertiary-color: hsl(340, 100%, 20%);
+  --tertiary-container-color: hsl(339, 100%, 28%);
+  --on-tertiary-container-color: hsl(354, 100%, 93%);
+  --error-color: hsl(6, 80%, 72%);
+  --on-error-color: hsl(6, 80%, 18%);
+  --error-container-color: hsl(6, 60%, 30%);
+  --on-error-container-color: hsl(6, 90%, 90%);
+  --background-color: hsl(348, 12%, 9%);
+  --on-background-color: hsl(350, 24%, 90%);
+  --surface-color: hsl(348, 12%, 9%);
+  --on-surface-color: hsl(350, 24%, 90%);
+  --surface-variant-color: hsl(340, 2%, 28%);
+  --on-surface-variant-color: hsl(350, 5%, 78%);
+  --outline-color: hsl(348, 2%, 57%);
+  --outline-variant-color: hsl(340, 2%, 28%);
+  --inverse-surface-color: hsl(350, 24%, 90%);
+  --inverse-on-surface-color: hsl(340, 6%, 20%);
+  --inverse-primary-color: hsl(338, 68%, 42%);
+  --surface-dim-color: hsl(346, 13%, 8%);
+  --surface-bright-color: hsl(350, 14%, 15%);
+  --surface-container-lowest-color: hsl(345, 12%, 7%);
+  --surface-container-low-color: hsl(340, 10%, 11%);
+  --surface-container-color: hsl(343, 10%, 13%);
+  --surface-container-high-color: hsl(342, 9%, 16%);
+  --surface-container-highest-color: hsl(342, 9%, 19%);
+}
+
+.text-display-large {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 3.875rem;
+  font-weight: 400;
+  line-height: 1.50;
+  letter-spacing: -0.1356em;
+}
+
+.text-dispaly-medium {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 3.500rem;
+  font-weight: 400;
+  line-height: 1.50;
+  letter-spacing: -0.1225em;
+}
+
+.text-dispaly-small {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 2.750rem;
+  font-weight: 400;
+  line-height: 1.50;
+  letter-spacing: -0.0688em;
+}
+
+.text-headline-large {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 3.000rem;
+  font-weight: 500;
+  line-height: 1.19;
+  letter-spacing: -0.0660em;
+}
+
+.text-headline-medium {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 2.000rem;
+  font-weight: 500;
+  line-height: 1.50;
+  letter-spacing: -0.0360em;
+}
+
+.text-headline-small {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 1.750rem;
+  font-weight: 500;
+  line-height: 1.50;
+  letter-spacing: -0.0210em;
+}
+
+.text-title-large {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 1.500rem;
+  font-weight: 400;
+  line-height: 1.50;
+  letter-spacing: -0.0225em;
+}
+
+.text-title-medium {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 1.250rem;
+  font-weight: 500;
+  line-height: 1.50;
+  letter-spacing: -0.0187em;
+}
+
+.text-title-small {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 1.000rem;
+  font-weight: 500;
+  line-height: 1.50;
+  letter-spacing: -0.0120em;
+}
+
+.text-body-large {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 1.250rem;
+  font-weight: 400;
+  line-height: 1.50;
+  letter-spacing: -0.0187em;
+}
+
+.text-body-medium {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 1.000rem;
+  font-weight: 500;
+  line-height: 1.50;
+  letter-spacing: -0.0150em;
+}
+
+.text-body-small {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 1.000rem;
+  font-weight: 400;
+  line-height: 1.50;
+  letter-spacing: -0.0120em;
+}
+
+.text-label-large {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.50;
+  letter-spacing: -0.0131em;
+}
+
+.text-label-medium {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 0.750rem;
+  font-weight: 500;
+  line-height: 1.50;
+  letter-spacing: -0.0112em;
+}
+
+.text-label-small {
+  font-family: 'Inter', 'Open Sans', sans-serif;
+  font-size: 0.750rem;
+  font-weight: 500;
+  line-height: 1.50;
+  letter-spacing: -0.0090em;
+}

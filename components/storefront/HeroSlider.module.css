@@ -1,0 +1,193 @@
+.heroSliderContainer {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  overflow: hidden;
+  background-color: #0e0a0c;
+}
+
+@media (min-width: 768px) {
+  .heroSliderContainer {
+    height: 620px;
+  }
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center 25%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), visibility 1s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 var(--spacing-6, 24px);
+}
+
+.activeSlide {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.slideOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(14, 10, 12, 0.9) 0%,
+    rgba(22, 14, 18, 0.75) 45%,
+    rgba(32, 16, 24, 0.45) 75%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  z-index: 2;
+}
+
+.slideContent {
+  position: relative;
+  z-index: 3;
+  max-width: 640px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transform: translateY(15px);
+  opacity: 0;
+  transition: transform 0.8s ease 0.2s, opacity 0.8s ease 0.2s;
+}
+
+.activeSlide .slideContent {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slideTitle {
+  font-family: var(--font-family-display, 'Playfair Display', Georgia, serif);
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0 0 var(--spacing-3, 12px) 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 768px) {
+  .slideTitle {
+    font-size: 3.5rem;
+  }
+}
+
+.slideSubtitle {
+  font-size: var(--font-size-base, 1rem);
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.5;
+  margin: 0 0 var(--spacing-6, 24px) 0;
+  max-width: 480px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slideActions {
+  display: flex;
+  gap: var(--spacing-4, 16px);
+}
+
+.slideFootnote {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.4;
+  margin: -12px 0 28px 0;
+  max-width: 440px;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, hsl(341, 88%, 65%) 0%, hsl(336, 80%, 55%) 100%);
+  color: #ffffff;
+  padding: var(--spacing-3, 12px) var(--spacing-8, 32px);
+  border-radius: var(--radius-md, 8px);
+  font-weight: 700;
+  font-size: var(--font-size-base, 1rem);
+  text-decoration: none;
+  min-height: 48px;
+  box-shadow: 0 8px 24px rgba(234, 40, 95, 0.35);
+  transition: all 0.25s ease;
+}
+
+.primaryCta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(234, 40, 95, 0.5);
+  filter: brightness(1.05);
+}
+
+/* Nav Arrow Buttons */
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  opacity: 0.7;
+}
+
+.navButton:hover {
+  opacity: 1;
+  background: rgba(234, 40, 95, 0.8);
+  border-color: transparent;
+}
+
+.prevButton {
+  left: 16px;
+}
+
+.nextButton {
+  right: 16px;
+}
+
+/* Pagination Dots */
+.pagination {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.activeDot {
+  width: 28px;
+  border-radius: 6px;
+  background: hsl(341, 88%, 65%);
+  box-shadow: 0 0 10px rgba(234, 40, 95, 0.6);
+}

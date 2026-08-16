@@ -1,0 +1,175 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  background-color: var(--surface-container-low-color, var(--surface-color, #ffffff));
+  padding: 16px;
+  border-radius: var(--radius-lg, 12px);
+  border: 1px solid var(--outline-variant-color, #e7e5e4);
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.searchForm {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .searchForm {
+    max-width: 380px;
+  }
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface-variant-color, #78716c);
+  pointer-events: none;
+  line-height: 0;
+}
+
+.searchInput {
+  width: 100%;
+  height: 40px;
+  padding: 8px 32px 8px 36px;
+  background-color: var(--surface-color, #ffffff);
+  border: 1px solid var(--outline-variant-color, #e7e5e4);
+  border-radius: var(--radius-md, 8px);
+  color: var(--on-surface-color, #1c1917);
+  font-size: 0.875rem;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--primary-color, #d4af37);
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+.clearSearchBtn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--on-surface-variant-color, #78716c);
+  cursor: pointer;
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm, 4px);
+  font-size: 0.875rem;
+  line-height: 1;
+  transition: all 0.15s ease;
+}
+
+.clearSearchBtn:hover {
+  color: var(--on-surface-color, #1c1917);
+  background-color: var(--surface-container-high-color, #e7e5e4);
+}
+
+.searchSubmitBtn {
+  height: 40px;
+  padding: 0 16px;
+  background-color: var(--surface-container-high-color, #e7e5e4);
+  color: var(--on-surface-color, #1c1917);
+  border: 1px solid var(--outline-variant-color, #d6d3d1);
+  border-radius: var(--radius-md, 8px);
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.searchSubmitBtn:hover {
+  background-color: var(--surface-container-highest-color, #d6d3d1);
+}
+
+
+.dropdownsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.select {
+  height: 40px;
+  padding: 0 34px 0 12px;
+  background-color: var(--surface-color, #ffffff);
+  border: 1px solid var(--outline-variant-color, #e7e5e4);
+  border-radius: var(--radius-md, 8px);
+  color: var(--on-surface-color, #1c1917);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px 14px;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--primary-color, #d4af37);
+}
+
+
+.resetBtn {
+  height: 40px;
+  padding: 0 12px;
+  background: transparent;
+  border: 1px solid var(--error-color, #dc2626);
+  border-radius: var(--radius-md, 8px);
+  color: var(--error-color, #dc2626);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetBtn:hover {
+  background-color: rgba(220, 38, 38, 0.08);
+}
+
+.loadingIndicator {
+  font-size: 0.8125rem;
+  color: var(--primary-color, #d4af37);
+  font-weight: 600;
+}
