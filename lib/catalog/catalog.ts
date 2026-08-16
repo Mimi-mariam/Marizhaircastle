@@ -67,7 +67,7 @@ export async function getCatalogFilterOptions() {
   const textures = Array.from(
     new Set(
       activeProducts
-        .map((p) => p.texture?.trim())
+        .map((p: { texture: string | null }) => p.texture?.trim())
         .filter((t): t is string => Boolean(t))
     )
   ).sort();
@@ -75,10 +75,10 @@ export async function getCatalogFilterOptions() {
   const lengths = Array.from(
     new Set(
       activeProducts
-        .map((p) => p.length?.trim())
+        .map((p: { length: string | null }) => p.length?.trim())
         .filter((l): l is string => Boolean(l))
     )
-  ).sort((a, b) => {
+  ).sort((a: string, b: string) => {
     const numA = parseInt(a, 10) || 0;
     const numB = parseInt(b, 10) || 0;
     return numA - numB;

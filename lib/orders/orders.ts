@@ -72,7 +72,7 @@ export async function createOrder(params: {
         where: { userId },
         include: { items: true },
       });
-      itemsToProcess = cart?.items.map((i) => ({ variantId: i.variantId, quantity: i.quantity })) ?? [];
+      itemsToProcess = cart?.items.map((i: { variantId: string; quantity: number }) => ({ variantId: i.variantId, quantity: i.quantity })) ?? [];
     } else {
       itemsToProcess = delivery.guestItems ?? [];
     }
