@@ -15,7 +15,9 @@ export function BackLink({
   function handleBack(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (typeof window !== "undefined") {
-      if (window.history.length > 1) {
+      // In mobile SPAs, window.history.length is often 1 or 2 even if opened directly.
+      // If document.referrer exists and is same-origin, router.back(), otherwise go to fallbackHref.
+      if (document.referrer && document.referrer.includes(window.location.host)) {
         router.back();
       } else {
         router.push(fallbackHref);

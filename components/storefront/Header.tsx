@@ -32,16 +32,16 @@ export function Header() {
   const user = session?.user;
   const isAuthenticated = status === "authenticated";
 
-  const openDrawer = () => {
-    drawerOpenedAtRef.current = performance.now();
-    setDrawerOpen(true);
+  const openDrawer = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    drawerOpenedAtRef.current = Date.now();
+    setDrawerOpen((prev) => !prev);
   };
 
-  // Prevent the mobile "ghost click" that fires on the just-mounted backdrop
-  // right after opening the drawer, which would close it instantly.
   const closeFromBackdrop = (e: React.MouseEvent) => {
-    if (performance.now() - drawerOpenedAtRef.current < 350) {
-      e.preventDefault();
+    e.stopPropagation();
+    // Allow at least 400ms after opening before a backdrop click is registered to prevent mobile ghost taps
+    if (Date.now() - drawerOpenedAtRef.current < 400) {
       return;
     }
     setDrawerOpen(false);
