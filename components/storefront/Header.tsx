@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
@@ -9,6 +9,7 @@ import styles from "./Header.module.css";
 export function Header() {
   const { data: session, status } = useSession();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const drawerOpenedAtRef = useRef(0);
   const pathname = usePathname();
 
   // Close drawer automatically when route changes
@@ -31,6 +32,21 @@ export function Header() {
   const user = session?.user;
   const isAuthenticated = status === "authenticated";
 
+  const openDrawer = () => {
+    drawerOpenedAtRef.current = performance.now();
+    setDrawerOpen(true);
+  };
+
+  // Prevent the mobile "ghost click" that fires on the just-mounted backdrop
+  // right after opening the drawer, which would close it instantly.
+  const closeFromBackdrop = (e: React.MouseEvent) => {
+    if (performance.now() - drawerOpenedAtRef.current < 350) {
+      e.preventDefault();
+      return;
+    }
+    setDrawerOpen(false);
+  };
+
   return (
     <>
       <header className={styles.header}>
@@ -40,7 +56,7 @@ export function Header() {
             <button
               type="button"
               className={styles.menuButton}
-              onClick={() => setDrawerOpen(true)}
+              onClick={openDrawer}
               aria-label="Open navigation menu"
               aria-expanded={drawerOpen}
               aria-controls="mobile-drawer"
@@ -205,7 +221,7 @@ export function Header() {
                 <Link
                   href="/account"
                   className={styles.drawerItem}
-                  onClick={() => setDrawerOpen(false)}
+onClick={closeFromBackdrop}
                 >
                   <span>My Account & Orders</span>
                   <span className={styles.drawerItemArrow} aria-hidden="true">→</span>
