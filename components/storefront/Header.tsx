@@ -131,7 +131,7 @@ export function Header() {
       {drawerOpen && (
         <div
           className={styles.backdrop}
-          onClick={() => setDrawerOpen(false)}
+          onClick={closeFromBackdrop}
           aria-hidden="true"
         />
       )}
@@ -221,7 +221,7 @@ export function Header() {
                 <Link
                   href="/account"
                   className={styles.drawerItem}
-onClick={closeFromBackdrop}
+                  onClick={() => setDrawerOpen(false)}
                 >
                   <span>My Account & Orders</span>
                   <span className={styles.drawerItemArrow} aria-hidden="true">→</span>
