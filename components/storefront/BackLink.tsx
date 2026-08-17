@@ -15,12 +15,7 @@ export function BackLink({
   function handleBack(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (typeof window !== "undefined") {
-      // Check if there is an in-app referrer or history entry
-      const hasReferrer =
-        document.referrer &&
-        document.referrer.startsWith(window.location.origin);
-
-      if (hasReferrer || window.history.length > 2) {
+      if (window.history.length > 1) {
         router.back();
       } else {
         router.push(fallbackHref);

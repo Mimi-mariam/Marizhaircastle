@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
@@ -9,13 +9,7 @@ import styles from "./Header.module.css";
 export function Header() {
   const { data: session, status } = useSession();
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const openedAt = useRef(0);
   const pathname = usePathname();
-
-  // Suppress ghost clicks fired by iOS Safari right after the drawer + full-screen
-  // backdrop mount beneath the finger that tapped the menu button (they would
-  // otherwise immediately close the drawer). Ignore clicks within this window.
-  const ignoreInitialClick = () => Date.now() - openedAt.current < 400;
 
   // Close drawer automatically when route changes
   useEffect(() => {
@@ -46,10 +40,7 @@ export function Header() {
             <button
               type="button"
               className={styles.menuButton}
-              onClick={() => {
-                openedAt.current = Date.now();
-                setDrawerOpen(true);
-              }}
+              onClick={() => setDrawerOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={drawerOpen}
               aria-controls="mobile-drawer"
@@ -124,9 +115,7 @@ export function Header() {
       {drawerOpen && (
         <div
           className={styles.backdrop}
-          onClick={() => {
-            if (!ignoreInitialClick()) setDrawerOpen(false);
-          }}
+          onClick={() => setDrawerOpen(false)}
           aria-hidden="true"
         />
       )}
@@ -144,19 +133,14 @@ export function Header() {
             <Link
               href="/"
               className={styles.drawerBrand}
-              onClick={(e) => {
-                if (ignoreInitialClick()) e.preventDefault();
-                else setDrawerOpen(false);
-              }}
+              onClick={() => setDrawerOpen(false)}
             >
               Marizhaircastle
             </Link>
             <button
               type="button"
               className={styles.closeButton}
-              onClick={() => {
-                if (!ignoreInitialClick()) setDrawerOpen(false);
-              }}
+              onClick={() => setDrawerOpen(false)}
               aria-label="Close menu"
             >
               ✕

@@ -312,14 +312,21 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: var(--spacing-6, 24px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-3, 12px);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .grid {
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: var(--spacing-8, 32px);
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: var(--spacing-4, 16px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--spacing-6, 24px);
   }
 }
 
