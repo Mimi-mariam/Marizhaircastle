@@ -15,7 +15,7 @@ class CartError extends Error {
 
 export async function GET() {
   const session = await getServerSession(authOptions);
-  if (!session?.user) {
+  if (!session?.user?.id) {
     return NextResponse.json({ error: "Please sign in." }, { status: 401 });
   }
 
@@ -25,7 +25,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const session = await getServerSession(authOptions);
-  if (!session?.user) {
+  if (!session?.user?.id) {
     return NextResponse.json({ error: "Please sign in." }, { status: 401 });
   }
 

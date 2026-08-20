@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getProductBySlug } from "@/lib/catalog/catalog";
+import { getProductBySlug, getRelatedProducts } from "@/lib/catalog/catalog";
 import { formatNaira } from "@/lib/utils/format";
 import { AddToCart } from "@/components/storefront/AddToCart";
 import { ProductMediaGallery } from "@/components/storefront/ProductMediaGallery";
 import { BackLink } from "@/components/storefront/BackLink";
+import { ProductCard } from "@/components/storefront/ProductCard";
 import styles from "./product.module.css";
 
 export const dynamic = "force-dynamic";
@@ -31,6 +32,8 @@ export default async function ProductDetailPage({
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) notFound();
+
+  const relatedProducts = await getRelatedProducts(product.id, product.category?.slug, 4);
 
   const variants = product.variants.map((variant) => ({
     id: variant.id,
@@ -119,6 +122,17 @@ export default async function ProductDetailPage({
           </p>
         </div>
       </div>
+
+      {relatedProducts.length > 0 ? (
+        <section className={styles.relatedSection}>
+          <h2 className={styles.relatedTitle}>You may also like</h2>
+          <div className={styles.relatedGrid}>
+            {relatedProducts.map((p) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }

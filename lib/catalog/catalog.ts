@@ -235,3 +235,27 @@ export async function getProductBySlug(slug: string) {
   }
 }
 
+export async function getRelatedProducts(
+  productId: string,
+  categorySlug?: string | null,
+  limit = 4
+) {
+  try {
+    const products = await prisma.product.findMany({
+      where: {
+        active: true,
+        archived: false,
+        id: { not: productId },
+        ...(categorySlug ? { category: { slug: categorySlug } } : {}),
+      },
+      include: productInclude,
+      orderBy: { createdAt: "desc" },
+      take: limit,
+    });
+
+    return serializeProducts(products);
+  } catch (error) {
+    console.error("getRelatedProducts error:", error);
+    return [];
+  }
+}

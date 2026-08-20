@@ -18,7 +18,7 @@ export async function PATCH(
   { params }: { params: Promise<{ variantId: string }> }
 ) {
   const session = await getServerSession(authOptions);
-  if (!session?.user) {
+  if (!session?.user?.id) {
     return NextResponse.json({ error: "Please sign in." }, { status: 401 });
   }
 
@@ -92,7 +92,7 @@ export async function DELETE(
   { params }: { params: Promise<{ variantId: string }> }
 ) {
   const session = await getServerSession(authOptions);
-  if (!session?.user) {
+  if (!session?.user?.id) {
     return NextResponse.json({ error: "Please sign in." }, { status: 401 });
   }
 

@@ -28,11 +28,15 @@ function createClient(): PrismaClient {
     globalForPrisma.pool = pool;
   }
 
-  const adapter = new PrismaPg(pool);
+const adapter = new PrismaPg(pool);
 
   return new PrismaClient({
     adapter,
-    log: process.env.NODE_ENV === "development" ? ["warn", "error"] : ["error"],
+    log: process.env.NODE_ENV === "development" ? ["warn", "error"] : undefined,
+    transactionOptions: {
+      maxWait: 15000,
+      timeout: 30000,
+    },
   });
 }
 

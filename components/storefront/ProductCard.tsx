@@ -37,7 +37,7 @@ export function ProductCard({ product }: { product: ProductCardProduct }) {
     (sum, v) => sum + (v.inventory?.stock ?? 0),
     0
   );
-  const isOutOfStock = variants.length > 0 && totalStock === 0;
+  const isOutOfStock = totalStock === 0;
   const isLowStock = totalStock > 0 && totalStock <= 3;
   const defaultVariant = variants.find((v) => (v.inventory?.stock ?? 0) > 0) || variants[0];
 
@@ -112,15 +112,15 @@ export function ProductCard({ product }: { product: ProductCardProduct }) {
           )}
           {isOutOfStock ? (
             <span className={`${styles.badge} ${styles.badgeOutOfStock}`}>
-              Out of Stock
+              Not Available
             </span>
           ) : isLowStock ? (
             <span className={`${styles.badge} ${styles.badgeLowStock}`}>
-              Low Stock ({totalStock} left)
+              Low-in-stock
             </span>
           ) : (
             <span className={`${styles.badge} ${styles.badgeInStock}`}>
-              In Stock
+              In-stock
             </span>
           )}
         </div>

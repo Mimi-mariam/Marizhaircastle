@@ -93,7 +93,7 @@ export default async function HomePage() {
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
           <div>
-            <span className={styles.sectionEyebrow}>Curated For You</span>
+
             <h2 className={styles.sectionTitle}>Find Your Perfect Hair</h2>
           </div>
           <Link href="/collections" className={styles.sectionLink}>

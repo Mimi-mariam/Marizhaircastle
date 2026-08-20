@@ -15,7 +15,7 @@ const mergeCartSchema = z.object({
 
 export async function POST(request: Request) {
   const session = await getServerSession(authOptions);
-  if (!session?.user) {
+  if (!session?.user?.id) {
     return NextResponse.json({ error: "Please sign in." }, { status: 401 });
   }
 

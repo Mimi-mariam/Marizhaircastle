@@ -196,6 +196,10 @@
 }
 
 .title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);

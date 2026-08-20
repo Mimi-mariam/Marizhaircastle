@@ -253,11 +253,8 @@
   justify-content: center;
   gap: 8px;
   min-height: 44px;
-  padding: 8px 16px;
-  border: 1px solid var(--primary-color);
-  border-radius: var(--radius-md, 8px);
-  background-color: var(--primary-color);
-  color: #ffffff;
+  padding: 8px 0;
+  color: inherit;
   font-size: var(--font-size-sm, 0.875rem);
   font-weight: 600;
   text-decoration: none;
@@ -266,9 +263,7 @@
 }
 
 .sectionLink:hover {
-  filter: brightness(1.05);
-  text-decoration: none;
-  transform: translateY(-1px);
+  text-decoration: underline;
 }
 
 @media (max-width: 767px) {
